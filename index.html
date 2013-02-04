@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Dismantling the Monorail</title>
+
+    <meta name="author" content="Jack Lawson <ajacksified@gmail.com>">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <h1>Dismantling the Monorail</h1>
+        </section>
+
+        <section>
+          <h1>Jack Lawson</h1>
+          <h3>@ajacksified <small>on <a href="http://twitter.com/ajacksified" target="_blank">twitter</a> &amp; <a href="https://github.com/ajacksified" target="_blank">github</a></small></h3>
+          <h3>Engineer at Airbnb</h3>
+
+          <a class="image" href="http://www.thejacklawson.com/" target="_blank">
+            <img width="200" height="200" src="http://www.gravatar.com/avatar/a29db26f9fdc4d5a689d894507c84edc.png?s=200" alt="Jack Lawson">
+          </a>
+        </section>
+
+        <section>
+          <h1>Long-Term Development</h1>
+        </section>
+
+        <section>
+          <h1>Application Lifecycle</h1>
+        </section>
+
+        <section>
+          <h1>In the Beginning</h1>
+          <h2>A Team Builds An App</h2>
+        </section>
+
+        <section>
+          <h2>Priority #1</h2>
+          <h1>Rapid Iteration</h1>
+        </section>
+
+        <section>
+          <h1>Fast Feature Development</h1>
+        </section>
+
+        <section>
+          <h1>Simple Conceptual Model</h1>
+        </section>
+
+        <section>
+          <h1>Single MVC Application</h1>
+          <h2>Layers Are Great</h2>
+          <h6>That's not sarcasm</h6>
+        </section>
+
+        <section>
+          <!-- TODO MVC image -->
+        </section>
+
+        <section>
+          <h1>It's Easy</h1>
+          <pre><code>rails new todoapp</code></pre>
+          <p>or</p>
+          <pre><code>express --sessions --css less --hogan todoapp</code></pre>
+          <p>then</p>
+          <pre><code>cd todoapp
+git init
+git add .
+git commit -m 'Intial'
+heroku create
+git push heroku master</code></pre>
+        </section>
+
+        <section>
+          <h1>Optimized Communication</h1>
+          <h2>Keep It All In Your Head</h2>
+        </section>
+
+        <section>
+          <h2>Time is Your Enemy</h2>
+          <h1>Chaos and Entropy</h1>
+        </section>
+
+        <section>
+          <h1>A Growing <small>(Application / Team)</small> Introduces Complexity</h1>
+        </section>
+
+        <section>
+          <h1>Higher Communication Overhead</h1>
+          <h3>Meetings, Standups, &amp; <em>Coordination</em></h3>
+        </section>
+
+        <section>
+          <h1>More Maintainance, Less Feature Development</h1>
+        </section>
+
+        <section>
+          <h1>Big Problems if Test Suite is Lacking</h1>
+        </section>
+
+        <section>
+          <h1>Upgrading Dependencies Becomes Hard</h1>
+          <h6>Raise your hand if you've ever put off a Rails 3.2 Upgrade</h6>
+        </section>
+
+        <section>
+          <h1>One-offs and Duplicated Code</h1>
+          <h2>Specific APIs for Mobile</h2>
+        </section>
+
+        <section>
+          <h2>To Solve Performance</h2>
+          <h1>"Throw more metal at it"</h1>
+        </section>
+
+        <section>
+          <h1>Strained Conventions</h1>
+          <h2>Shortcuts are Easy When Everything's Accessible</h2>
+        </section>
+
+        <section>
+          <h1>The Easy Route is Taken When Optimizing For the Short-Term</h1>
+        </section>
+
+        <section>
+          <h1>That Means Shortcuts</h1>
+          <h3>Like view helpers directly calling SQL</h3>
+        </section>
+
+        <section>
+          <h1>Simple MVC Conceptual Model</h1>
+        </section>
+
+        <section data-state="alert">
+          <h1>Complex Broken MVC Model Full of Hacks</h1>
+          <h4>:(</h4>
+        </section>
+
+        <section>
+          <h2>You May Ask Yourself</h2>
+          <h1>How Did I Get Here?</h1>
+        </section>
+
+        <section>
+          <h1>Once X is Done, We Will Rebuild It All Better</h1>
+        </section>
+
+        <section>
+          <h1>X Almost Never "Gets Done"</h1>
+        </section>
+
+        <section>
+          <h1>Dismantling the Monorail</h1>
+        </section>
+
+        <section>
+          <h1>Prioritize Long-Term Development Efficiency</h1>
+        </section>
+
+        <section>
+          <h1>Have Your Cake and Eat It Too</h1>
+        </section>
+
+        <section>
+          <h1>A Different Conceptual Model</h1>
+          <h2>It's Still Simple</h2>
+        </section>
+
+        <section>
+          <h1>Services</h1>
+          <!-- TODO Services Image -->
+        </section>
+
+        <section>
+          <h1>Not a Particularly New Idea</h1>
+          <h5>You're likely familiar with "the internet", a distributed system</h5>
+        </section>
+
+        <section>
+          <h1>Discrete Systems Lead To Specialization</h1>
+        </section>
+
+        <section>
+          <h1>UX is Removed From Application Logic <em>Impmlementation</em></h1>
+        </section>
+
+        <section>
+          <h1>Isolated Specialization Leads to Flexibility</h1>
+        </section>
+
+        <section>
+          <h1>Flexibility: Using the Right Tool for the Job</h1>
+        </section>
+
+        <section>
+          <h2>Best Framework for Application Logic</h2>
+          <h2>Best Framework for UX</h2>
+          <h2>Best Database for Persistence</h2>
+          <h6>These Are Almost Never the Same Answer</h6>
+        </section>
+
+        <section>
+          <h1>Reusable APIs</h1>
+          <h2>Implement Android, iOS, Google Glasses,</h2>
+          <h3>Kindles, Game Consoles,</h3>
+          <h4>Raspberry Pis, Desktops, Laptops,</h4>
+          <h5>e-paper Wristwatches, 3-D Printers, </h5>
+          <h6>Chatbots, Console Scripts, public APIs...</h6>
+          <h2>With No Special Code</h2>
+        </section>
+
+        <section>
+          <h2>Provided You Use</h2>
+          <h1>Common Protocols</h1>
+          <h2>Like JSON Over Strict REST</h2>
+        </section>
+
+        <section>
+          <h1>Introduces Additional <del>Complexities</del> Opportunities</h1>
+        </section>
+
+        <section>
+          <h1>Partial Failure</h1>
+          <h2>Means The Entire Application Isn't Unavailable</h2>
+        </section>
+
+        <section>
+          <h1>Multiple Systems at Once</h1>
+          <h2>Highlights Communication Inefficiencies</h2>
+        </section>
+
+        <section>
+          <h1>More Complex Ops</h1>
+          <h2>Allows Scaling of Burdened Services for More Efficient Server Utilization</h2>
+        </section>
+
+        <section>
+          <h1>Shared Assets</h1>
+          <h2>Bundle Reusable Libraries</h2>
+        </section>
+
+        <section>
+          <h1>Efficiencies From Specialization, Re-Use, and Scaling</h1>
+        </section>
+
+        <section>
+          <h1>Fast Iterations</h1>
+          <h2>Which Is What We Wanted Anyway</h2>
+        </section>
+
+        <section>
+          <h1>Less Overhead</h1>
+          <h2>More Efficiently Used Servers and Developer Time</h2>
+        </section>
+
+        <section>
+          <h1>Less Frustration</h1>
+          <h2>Stop Digging Through SQL Injected In View Helpers</h2>
+        </section>
+
+        <section>
+          <h1>Proof</h1>
+          <h2>Amazon, Netflix, many others</h2>
+        </section>
+
+        <section>
+          <h1>Getting There</h1>
+          <h2>Few People Are Starting from Nothing</h2>
+        </section>
+
+        <section>
+          <h1>Separate Logic into Libraries</h1>
+          <h2>Move Business Logic into NPM pacakages, Gems, JARs, what-have-you</h2>
+        </section>
+
+        <section>
+          <h1>Draw the Line Between Models</h1>
+          <h2>Eleminate Model Talking Where Possible</h2>
+        </section>
+
+        <section>
+          <h1>Separate Libraries into Servers</h1>
+          <h2>Define an interface (like JSON over REST)</h2>
+        </section>
+
+        <section>
+          <h1>Delete Your Old Monolithic Repository</h1>
+        </section>
+
+        <section>
+          <h1>Monorail Dismantled</h1>
+          <h2>Now You Have a Platform Instead of an Application</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      theme: Reveal.getQueryHash().theme || 'serif',
+      transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+    });
+    </script>
+  </body>
+</html>
