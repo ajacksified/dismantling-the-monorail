@@ -21,125 +21,222 @@
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
-      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
     </script>
 
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
   </head>
-
   <body>
 
     <div class="reveal">
-
-      <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
 
         <section>
           <h1>Dismantling the Monorail</h1>
+          <p>Jack Lawson (<a href="https://twitter.com/ajacksified" target="_blank">@ajacksified</a>)</p>
         </section>
 
         <section>
-          <h1>Jack Lawson</h1>
-          <h3>@ajacksified <small>on <a href="http://twitter.com/ajacksified" target="_blank">twitter</a> &amp; <a href="https://github.com/ajacksified" target="_blank">github</a></small></h3>
-          <h3>Engineer at Airbnb</h3>
-
-          <a class="image" href="http://www.thejacklawson.com/" target="_blank">
-            <img width="200" height="200" src="http://www.gravatar.com/avatar/a29db26f9fdc4d5a689d894507c84edc.png?s=200" alt="Jack Lawson">
-          </a>
-        </section>
-
-        <section>
-          <h1>Long-Term Development</h1>
-        </section>
-
-        <section>
-          <h1>Application Lifecycle</h1>
+          <h1>Goals</h1>
+          <aside class="notes">
+            It is easy to say "set your sights on a goal, and do whatever you
+            can to achieve it." however, what is possible is defined by the
+            level of craftsmanship placed on the steps along the way. Goals can
+            be adjusted, but only if you're prepared for it. Luck favors the
+            prepared. Amazon revolutionized.
+          </aside>
         </section>
 
         <section>
           <h1>In the Beginning</h1>
           <h2>A Team Builds An App</h2>
+
+          <aside class="notes">
+            There are multiple scenarios that cause monolithic applications,
+            not all of them necessarily evil. One case is when building a new
+            application.
+          </aside>
         </section>
 
         <section>
           <h2>Priority #1</h2>
           <h1>Rapid Iteration</h1>
+
+          <aside class="notes">
+            The most important thing for many new projects is to rapidly
+            iterate on a product idea in order to evaluate its usefulness. The
+            formation of the MVP.
+          </aside>
         </section>
 
         <section>
           <h1>Fast Feature Development</h1>
+
+          <aside class="notes">
+            It is at this stage that the ratio of new features is greatest- the
+            evolution of an application takes place through new features, much
+            like cell division.
+          </aside>
         </section>
 
         <section>
           <h1>Simple Conceptual Model</h1>
+
+          <aside class="notes">
+            To facilitate organization, it needs to be easy to communicate with
+            a team while being easy to keep inside your head.
+          </aside>
         </section>
 
         <section>
           <h1>Single MVC Application</h1>
           <h2>Layers Are Great</h2>
           <h6>That's not sarcasm</h6>
+
+          <aside class="notes">
+            MVC fits all of these things; it gives you simple, obvious buckets
+            to place things. Many developers already understand the concept or
+            can learn it quickly. Most web frameworks are MVC, many mobile and
+            desktop apps are MV* (MVVM, etc) already.
+          </aside>
         </section>
 
         <section>
           <img src="./img/mvc-simple.gif" />
-        </section>
 
-        <section>
-          <h1>It's Easy</h1>
-          <pre><code>rails new todoapp</code></pre>
-          <p>or</p>
-          <pre><code>express --sessions --css less --hogan todoapp</code></pre>
-          <p>then</p>
-          <pre><code>cd todoapp
-git init
-git add .
-git commit -m 'Intial'
-heroku create
-git push heroku master</code></pre>
+          <aside class="notes">
+            MVC apps supposedly look like this diagram; visitor goes to
+            catkarma.com, the url is routed to a controller, which
+            populates a view with model data and is returned. The user can then
+            vote on pictures of cats.
+          </aside>
         </section>
 
         <section>
           <h1>Optimized Communication</h1>
           <h2>Keep It All In Your Head</h2>
+
+          <aside class="notes">
+            Communication overhead is minimal for a small team, whether that
+            means you or you and a dozen other people; as long as everyone
+            sticks to their well-defined buckets.
+          </aside>
+        </section>
+
+        <section>
+          <h1>It's Easy</h1>
+          <p>for example</p>
+          <pre><code>rails new catkarma</code></pre>
+          <p>or</p>
+          <pre><code>express --sessions --css less --hogan catkarma</code></pre>
+          <p>then</p>
+          <pre><code>cd catkarma
+git init
+git add .
+git commit -m 'Intial'
+heroku create
+git push heroku master</code></pre>
+
+          <aside class="notes">
+            You can have a datbase-connected crud app with all the ideals
+            aforementioned after a few lines in a bash shell. Super easy to get
+            set up with tooling and servers.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Later On</h2>
+          <h1>Shifting Priorities</h1>
+          <h6>catkarma a riotious success</h6>
         </section>
 
         <section>
           <h2>Time is Your Enemy</h2>
           <h1>Chaos and Entropy</h1>
+
+          <aside class="notes">
+            Not everyone sticks to their well-defined buckets. Html leaks into
+            controllers, SQL leaks into helpers (and directly into views), and
+            the lines get a whole lot blurrier.
+          </aside>
         </section>
 
         <section>
           <h1>A Growing <small>(Application / Team)</small> Introduces Complexity</h1>
+
+          <aside class="notes">
+            Keeping track of what features are where and who maintains what and
+            which part of code depends on another gets very complicated,
+            quickly.
+          </aside>
         </section>
 
         <section>
           <h1>Higher Communication Overhead</h1>
           <h3>Meetings, Standups, &amp; <em>Coordination</em></h3>
+
+          <aside class="notes">
+            Suddenly, the communication model isn't as simple as it eas. The
+            model, previously optimized for small applications and teams,
+            can't fit into your head all at once anymore in a web of complexity.
+          </aside>
         </section>
 
         <section>
           <h1>More Maintainance, Less Feature Development</h1>
+
+          <aside class="notes">
+            Because of the increased communication overhead, it becomes common
+            to  do more maintainance than actual feature dev. Time is spent
+            learning the way around hacks implemented long ago in dark corners.
+            Bringing new devs up to speed takes longer and longer.
+          </aside>
         </section>
 
         <section>
           <h1>Big Problems if Test Suite is Lacking</h1>
+
+          <aside class="notes">
+            Refactoring becomes a massive beast of a problem without good
+            testing, which is really hard to do without stict separation of
+            concerns (overuse of helpers, for example.)
+          </aside>
         </section>
 
         <section>
           <h1>Upgrading Dependencies Becomes Hard</h1>
           <h6>Raise your hand if you've ever put off a Rails 3.2 Upgrade</h6>
+
+          <aside class="notes">
+            With an entire application written in a single mvc framework,
+            upgrading portions - or the framework itself - becomes very
+            difficult, as each change potentially affects everything.
+          </aside>
         </section>
 
         <section>
           <h1>One-offs and Duplicated Code</h1>
           <h2>Specific APIs for Mobile</h2>
+
+          <aside class="notes">
+            When building a monolithic application for a single use case - such
+            as the web - APIs are almost always an afterthought, because the
+            app can call itself instead of requiring a well-defined API. Then
+            mobile sites / app[ps step in, and one-offs are created.
+          </aside>
         </section>
 
         <section>
           <h2>To Solve Performance</h2>
           <h1>"Throw more metal at it"</h1>
+
+          <aside class="notes">
+            There's one way to scale a monolithic app- well, two. One is to
+            profile and optimize whatever you can.  The other is to throw
+            more isntances of that app up on more distributed servers.
+          </aside>
         </section>
 
         <section>
