@@ -14,7 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+    <link rel="stylesheet" href="css/theme/monorail.css" id="theme">
+    <link rel="stylesheet" href="css/states.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -33,9 +34,12 @@
     <div class="reveal">
       <div class="slides">
 
-        <section>
+        <section data-state="intro">
           <h1>Dismantling the Monorail</h1>
           <p>Jack Lawson (<a href="https://twitter.com/ajacksified" target="_blank">@ajacksified</a>)</p>
+          <aside class="notes">
+            A tale of antipatterns, and how to fix them. 
+          </aside>
         </section>
 
         <section>
@@ -118,8 +122,7 @@
         </section>
 
         <section>
-          <h1>Optimized Communication</h1>
-          <h2>Keep It All In Your Head</h2>
+          <h1>Keep It All In Your Head</h1>
 
           <aside class="notes">
             Communication overhead is minimal for a small team, whether that
@@ -133,7 +136,7 @@
           <p>for example</p>
           <pre><code>rails new catkarma</code></pre>
           <p>or</p>
-          <pre><code>express --sessions --css less --hogan catkarma</code></pre>
+          <pre><code>express --sessions --hogan catkarma</code></pre>
           <p>then</p>
           <pre><code>cd catkarma
 git init
@@ -167,7 +170,7 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>A Growing <small>(Application / Team)</small> Introduces Complexity</h1>
+          <h1>Growing Introduces Complexity</h1>
 
           <aside class="notes">
             Keeping track of what features are where and who maintains what and
@@ -177,7 +180,7 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Higher Communication Overhead</h1>
+          <h1>Higher <small>Communication</small> Overhead</h1>
           <h3>Meetings, Standups, &amp; <em>Coordination</em></h3>
 
           <aside class="notes">
@@ -188,7 +191,7 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>More Maintainance, Less Feature Development</h1>
+          <img src="img/inevitable.gif" />
 
           <aside class="notes">
             Because of the increased communication overhead, it becomes common
@@ -209,7 +212,7 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Upgrading Dependencies Becomes Hard</h1>
+          <h1>Upgrading Becomes Hard</h1>
           <h6>Raise your hand if you've ever put off a Rails 3.2 Upgrade</h6>
 
           <aside class="notes">
@@ -221,7 +224,6 @@ git push heroku master</code></pre>
 
         <section>
           <h1>One-offs and Duplicated Code</h1>
-          <h2>Specific APIs for Mobile</h2>
 
           <aside class="notes">
             When building a monolithic application for a single use case - such
@@ -233,7 +235,7 @@ git push heroku master</code></pre>
 
         <section>
           <h2>To Solve Performance</h2>
-          <h1>"Throw more metal at it"</h1>
+          <h1>Throw more server instances up</h1>
 
           <aside class="notes">
             There's one way to scale a monolithic app- well, two. One is to
@@ -243,21 +245,18 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Strained Conventions</h1>
-          <h2>Shortcuts are Easy When Everything's Accessible</h2>
+          <h2>To Maintain Speed</h2>
+          <h1>Take Shortcuts</h1>
+
+          <aside class="notes">
+            Trying to fit things into the right place in a rapidly growing
+            applicaiton can be tough. Model logic, view logic (shard and
+            otherwise), persistence code, startup code. APIs.
+          </aside>
         </section>
 
         <section>
-          <h1>The Easy Route is Taken When Optimizing For the Short-Term</h1>
-        </section>
-
-        <section>
-          <h1>That Means Shortcuts</h1>
-          <h3>Like view helpers directly calling SQL</h3>
-        </section>
-
-        <section>
-          <h1>Simple MVC Conceptual Model</h1>
+          <h1>Simple Conceptual Model?</h1>
         </section>
 
         <section>
@@ -265,75 +264,142 @@ git push heroku master</code></pre>
         </section>
 
         <section>
+          <h1>Not Quite</h1>
+        </section>
+
+        <section>
           <img src="./img/mvc-oh-no.gif" />
+
+          <aside class="notes">
+            What it really is, is a ton of different parts glued together. View
+            helpers, controllers, bolted on APIs, and more as it tries to 
+            handle all needs.
+          </aside>
         </section>
 
         <section data-state="alert">
-          <h1>Complex Broken MVC Model Full of Hacks</h1>
+          <h1>Complex And Full of Hacks</h1>
           <h4>:(</h4>
         </section>
 
         <section>
           <h2>You May Ask Yourself</h2>
           <h1>How Did I Get Here?</h1>
+
+          <aside class="notes">
+            It started off so nice and clean with fresh scaffolds. You had a
+            plan to keep logic in buckets. But this happened anyway.
+          </aside>
         </section>
 
         <section>
           <h1>Once X is Done, We Will Rebuild It All Better</h1>
-        </section>
+          <h3>Right? ...soon?</h3>
 
-        <section>
-          <h1>X Almost Never "Gets Done"</h1>
+          <aside class="notes">
+            You probably said "I'll clean this later", or you're saying it now.
+            Problem is, it's really hard to put aside time purely for technical
+            debt after the time.
+          </aside>
         </section>
 
         <section>
           <h1>Dismantling the Monorail</h1>
+
+          <aside class="notes">
+            Not all is lost. Things are entirely recoverable without
+            sacrificing the priority - rapid development and agility.
+          </aside>
         </section>
 
         <section>
-          <h1>Prioritize Long-Term Development Efficiency</h1>
-        </section>
+          <h1>Prioritize Long-Term Efficiency</h1>
 
-        <section>
-          <h1>Have Your Cake and Eat It Too</h1>
+          <aside class="notes">
+            Build something lasting. And to do that, build something easily
+            changable, to eliminate friction between parts and compartmentalize
+            resonsibilities without allowing shortcuts. Accept that shortcuts
+            are bad.
+          </aside>
         </section>
 
         <section>
           <h1>A Different Conceptual Model</h1>
           <h2>It's Still Simple</h2>
+
+          <aside class="notes">
+            Reorganization of logic into discrete buckets of functionality, as
+            we were trying to do originally.
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <img src="./img/services.gif" />
+          </section>
+
+          <section>
+            <img src="./img/mvc-oh-no.gif" />
+          </section>
         </section>
 
         <section>
           <h1>Services</h1>
-        </section>
 
-        <section>
-          <img src="./img/services.gif" />
+          <aside class="notes">
+            Breaking up your application looks like it adds layers. Shortcuts
+            prevented. DRY code looks the same anyway. Little more work for ops
+            but easily mitigated.
+          </aside>
         </section>
 
         <section>
           <h1>Not a Particularly New Idea</h1>
           <h5>You're likely familiar with "the internet", a distributed system</h5>
+
+          <aside class="notes">
+            SOAs have been around for a long time. Amazon completely
+            revolutionized itself and is estimated to run at least 1% of the
+            entire internet, was prepared. Flexibility.
+          </aside>
         </section>
 
         <section>
-          <h1>Discrete Systems Lead To Specialization</h1>
+          <h1>Discrete Systems Lead to Specializing</h1>
+
+          <aside class="notes">
+            Engineers can work, isolated, on their specialties once a consensus
+            has been reached on predictable APIs. (Example, Neflaria.)
+          </aside>
+        </section>
+
+        <section>
+          <h1>Specializing Leads To Efficiency</h1>
+
+          <aside class="notes">
+            Developers working on what they do best is, surprise, more
+            efficient than having to be concerned with the entire stack. (Now,
+            this doesn't mean you shouldn't know the stack, obs.)
+          </aside>
         </section>
 
         <section>
           <img src="./img/services-closeup.gif" />
+
+          <aside class="notes">
+            As it grows more complex, you don't have to keep it all in check.
+            You're just working against a routing layer.
+          </aside>
         </section>
 
         <section>
-          <h1>UX is Removed From Application Logic <em>Impmlementation</em></h1>
-        </section>
+          <h1>Abstracted Logic Leads To Flexibility</h1>
+          <h2>Using the Right Tool for the Job</h2>
 
-        <section>
-          <h1>Isolated Specialization Leads to Flexibility</h1>
-        </section>
-
-        <section>
-          <h1>Flexibility: Using the Right Tool for the Job</h1>
+          <aside class="notes">
+            You can now swap out any portion of the code that you want.
+            Different technologies for different logical needs.
+          </aside>
         </section>
 
         <section>
@@ -341,6 +407,12 @@ git push heroku master</code></pre>
           <h2>Best Framework for UX</h2>
           <h2>Best Database for Persistence</h2>
           <h6>These Are Almost Never the Same Answer</h6>
+
+          <aside class="notes">
+            A single application has many needs. Some try to fit everything
+            in one database, like MySQL; some just connect five different
+            databases to one app. No need to.
+          </aside>
         </section>
 
         <section>
@@ -351,88 +423,163 @@ git push heroku master</code></pre>
           <h5>e-paper Wristwatches, 3-D Printers, </h5>
           <h6>Chatbots, Console Scripts, public APIs...</h6>
           <h2>With No Special Code</h2>
+
+          <aside class="notes">
+            You already have an API built so that your services can
+            intercommunicate, so you have no need for view-specific APIs
+            (although you have the flexibility to create one if you HAVE TO.)
+          </aside>
         </section>
 
         <section>
           <h2>Provided You Use</h2>
           <h1>Common Protocols</h1>
-          <h2>Like JSON Over Strict REST</h2>
+          <h2>Like RESTful JSON</h2>
+
+          <aside class="notes">
+            A common and predictable API scheme is more efficient. Less time
+            wasted looking at documentation or old code; with REST, you just
+            need a model definition and a format. JSON is universal.
+          </aside>
         </section>
 
         <section>
-          <h1>Introduces Additional <del>Complexities</del> Opportunities</h1>
+          <h1>Additional <del>Complexity</del> Opportunity</h1>
+
+          <aside class="notes">
+            SOAs introduce interesting challenges that monolithic apps don't.
+          </aside>
         </section>
 
         <section>
           <h1>Partial Failure</h1>
           <h2>Means The Entire Application Isn't Unavailable</h2>
+
+          <aside class="notes">
+            This would happen if, say, a database or group of servers was
+            offline. Instead of site going down, cached data / backups
+            are there. Less chance of feailure anyway beacuse less complex.
+          </aside>
         </section>
 
         <section>
           <h1>Multiple Systems at Once</h1>
           <h2>Highlights Communication Inefficiencies</h2>
+
+          <aside class="notes">
+            You might have to hit multiple servers at once to complete a
+            request; but you have an opportunity for data caching and request
+            bundling through an API layer.
+          </aside>
         </section>
 
         <section>
           <h1>More Complex Ops</h1>
           <h2>Allows Scaling of Burdened Services for More Efficient Server Utilization</h2>
+
+          <aside class="notes">
+            More different servers, but less error-prone servers with less load
+            per type. Can be scaled based on what part of app is more commonly
+            used to utilize hardware more effectively
+          </aside>
         </section>
 
         <section>
           <h1>Shared Assets</h1>
           <h2>Bundle Reusable Libraries</h2>
+
+          <aside class="notes">
+            Multiple services might share code; or client-side apps might share
+            css, js, or other bundled assets like templates. This highlights
+            these things for module extraction.
+          </aside>
         </section>
 
         <section>
-          <h1>Efficiencies From Specialization, Re-Use, and Scaling</h1>
+          <h1>Benefits Recap</h1>
         </section>
 
         <section>
           <h1>Fast Iterations</h1>
           <h2>Which Is What We Wanted Anyway</h2>
+
+          <aside class="notes">
+            New services take a little more ops work. But developer efficiency
+            is vastly increased because less concerns.
+          </aside>
         </section>
 
         <section>
           <h1>Less Overhead</h1>
           <h2>More Efficiently Used Servers and Developer Time</h2>
+
+          <aside class="notes">
+            Scale team and hardware according to needs properly.
+          </aside>
         </section>
 
         <section>
           <h1>Less Frustration</h1>
           <h2>Stop Digging Through SQL Injected In View Helpers</h2>
+
+          <aside class="notes">
+            Everything has a well-defined segment to live in; and shortcuts are
+            much harder to take.
+          </aside>
         </section>
 
         <section>
           <h1>Proof</h1>
           <h2>Amazon, Netflix, many others</h2>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Getting There</h1>
           <h2>Few People Are Starting from Nothing</h2>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Separate Logic into Libraries</h1>
           <h2>Move Business Logic into NPM pacakages, Gems, JARs, what-have-you</h2>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Draw the Line Between Models</h1>
           <h2>Eleminate Model Talking Where Possible</h2>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Separate Libraries into Servers</h1>
           <h2>Define an interface (like JSON over REST)</h2>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Delete Your Old Monolithic Repository</h1>
+
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h1>Monorail Dismantled</h1>
+
+          <aside class="notes">
+          </aside>
         </section>
       </div>
     </div>
@@ -449,7 +596,7 @@ git push heroku master</code></pre>
       history: true,
       center: true,
 
-      theme: Reveal.getQueryHash().theme || 'serif',
+      theme: Reveal.getQueryHash().theme || 'monorail',
       transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
       // Optional libraries used to extend on reveal.js

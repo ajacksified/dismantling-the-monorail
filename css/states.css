@@ -1,0 +1,10 @@
+.intro .reveal .state-background  {
+  background: url('../img/steam_train.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.intro .reveal h1, .intro .reveal p {
+  color: #fff;
+  text-shadow: none;
+}
