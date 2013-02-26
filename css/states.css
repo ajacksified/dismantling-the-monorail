@@ -1,10 +1,18 @@
-.intro .reveal .state-background  {
+.intro .reveal .state-background,
+.intro .reveal .state-background {
   background: url('../img/steam_train.gif');
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
-.intro .reveal h1, .intro .reveal p {
+.intro .reveal h1, .intro .reveal p,
+.dismantled .reveal h1, .dismantled .reveal p {
   color: #fff;
   text-shadow: none;
+}
+
+.dismantled .reveal .state-background  {
+  background: url('../img/explosion.gif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

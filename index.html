@@ -38,7 +38,7 @@
           <h1>Dismantling the Monorail</h1>
           <p>Jack Lawson (<a href="https://twitter.com/ajacksified" target="_blank">@ajacksified</a>)</p>
           <aside class="notes">
-            A tale of antipatterns, and how to fix them. 
+            A tale of antipatterns.
           </aside>
         </section>
 
@@ -46,10 +46,9 @@
           <h1>Goals</h1>
           <aside class="notes">
             It is easy to say "set your sights on a goal, and do whatever you
-            can to achieve it." however, what is possible is defined by the
-            level of craftsmanship placed on the steps along the way. Goals can
-            be adjusted, but only if you're prepared for it. Luck favors the
-            prepared. Amazon revolutionized.
+            can to achieve it." Upper bound is what we want. Lower bound is what
+            we can achieve. For engineers, what we can achieve is what we can
+            build. What we can build in a period of time is based on efficiency.
           </aside>
         </section>
 
@@ -79,21 +78,21 @@
         </section>
 
         <section>
+          <h1>Simple Conceptual Model</h1>
+
+          <aside class="notes">
+            To facilitate organization, it needs to be easy to communicate with
+            a team while being easy to keep inside your head.
+          </aside>
+        </section>
+
+        <section>
           <h1>Fast Feature Development</h1>
 
           <aside class="notes">
             It is at this stage that the ratio of new features to maintainance
             is greatest- the evolution of an application takes place through
             new features, much like cell division.
-          </aside>
-        </section>
-
-        <section>
-          <h1>Simple Conceptual Model</h1>
-
-          <aside class="notes">
-            To facilitate organization, it needs to be easy to communicate with
-            a team while being easy to keep inside your head.
           </aside>
         </section>
 
@@ -107,27 +106,6 @@
             to place things. Many developers already understand the concept or
             can learn it quickly. Most web frameworks are MVC, many mobile and
             desktop apps are MV* (MVVM, etc) already.
-          </aside>
-        </section>
-
-        <section>
-          <img src="./img/mvc-simple.gif" />
-
-          <aside class="notes">
-            MVC apps supposedly look like this diagram; visitor goes to
-            catkarma.com, the url is routed to a controller, which
-            populates a view with model data and is returned. The user can then
-            vote on pictures of cats.
-          </aside>
-        </section>
-
-        <section>
-          <h1>Keep It All In Your Head</h1>
-
-          <aside class="notes">
-            Communication overhead is minimal for a small team, whether that
-            means you or you and a dozen other people; as long as everyone
-            sticks to their well-defined buckets.
           </aside>
         </section>
 
@@ -149,6 +127,27 @@ git push heroku master</code></pre>
             You can have a datbase-connected crud app with all the ideals
             aforementioned after a few lines in a bash shell. Super easy to get
             set up with tooling and servers.
+          </aside>
+        </section>
+
+        <section>
+          <img src="./img/mvc-simple.gif" />
+
+          <aside class="notes">
+            MVC apps supposedly look like this diagram; visitor goes to
+            catkarma.com, the url is routed to a controller, which
+            populates a view with model data and is returned. The user can then
+            vote on pictures of cats.
+          </aside>
+        </section>
+
+        <section>
+          <h1>Keep It All In Your Head</h1>
+
+          <aside class="notes">
+            Communication overhead is minimal for a small team, whether that
+            means you or you and a dozen other people; as long as everyone
+            sticks to their well-defined buckets.
           </aside>
         </section>
 
@@ -313,7 +312,7 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Prioritize Long-Term Efficiency</h1>
+          <h1>Prioritize Efficiency</h1>
 
           <aside class="notes">
             Build something lasting. And to do that, build something easily
@@ -403,9 +402,10 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h2>Best Framework for Application Logic</h2>
-          <h2>Best Framework for UX</h2>
-          <h2>Best Database for Persistence</h2>
+          <h2>Best Technology For</h2>
+          <h2>Application Logic</h2>
+          <h2>User Interface</h2>
+          <h2>Persistence</h2>
           <h6>These Are Almost Never the Same Answer</h6>
 
           <aside class="notes">
@@ -496,10 +496,6 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Benefits Recap</h1>
-        </section>
-
-        <section>
           <h1>Fast Iterations</h1>
           <h2>Which Is What We Wanted Anyway</h2>
 
@@ -529,14 +525,6 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Proof</h1>
-          <h2>Amazon, Netflix, many others</h2>
-
-          <aside class="notes">
-          </aside>
-        </section>
-
-        <section>
           <h1>Getting There</h1>
           <h2>Few People Are Starting from Nothing</h2>
 
@@ -546,9 +534,9 @@ git push heroku master</code></pre>
 
         <section>
           <h1>Separate Logic into Libraries</h1>
-          <h2>Move Business Logic into NPM pacakages, Gems, JARs, what-have-you</h2>
 
           <aside class="notes">
+            Move Business Logic into NPM pacakages, Gems, JARs, what-have-you
           </aside>
         </section>
 
@@ -557,6 +545,8 @@ git push heroku master</code></pre>
           <h2>Eliminate Inter-model Communication</h2>
 
           <aside class="notes">
+            Allow the controller (router) to handle aggregation of data. Get
+            rid of helpers and logic where models call other models.
           </aside>
         </section>
 
@@ -575,7 +565,7 @@ git push heroku master</code></pre>
           </aside>
         </section>
 
-        <section>
+        <section data-state="dismantled">
           <h1>Monorail Dismantled</h1>
 
           <aside class="notes">
@@ -597,17 +587,14 @@ git push heroku master</code></pre>
       center: true,
 
       theme: Reveal.getQueryHash().theme || 'monorail',
-      transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+      transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
 
       // Optional libraries used to extend on reveal.js
       dependencies: [
         { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-        { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
         { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
         { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-        // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
       ]
     });
     </script>
