@@ -233,17 +233,6 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h2>To Solve Performance</h2>
-          <h1>Throw more server instances up</h1>
-
-          <aside class="notes">
-            There's one way to scale a monolithic app- well, two. One is to
-            profile and optimize whatever you can.  The other is to throw
-            more isntances of that app up on more distributed servers.
-          </aside>
-        </section>
-
-        <section>
           <h2>To Maintain Speed</h2>
           <h1>Take Shortcuts</h1>
 
@@ -533,29 +522,36 @@ git push heroku master</code></pre>
         </section>
 
         <section>
-          <h1>Separate Logic into Libraries</h1>
+          <h1>Separate Data Structures into Libraries</h1>
 
           <aside class="notes">
-            Move Business Logic into NPM pacakages, Gems, JARs, what-have-you
+            Move Business Logic into NPM pacakages, Gems, JARs, what-have-you.
+            DATA STRUCTURES ARE NOT DOMAIN MODELS.
           </aside>
         </section>
 
         <section>
-          <h1>Draw the Line Between Models</h1>
-          <h2>Eliminate Inter-model Communication</h2>
+          <h1>Define Services</h1>
 
           <aside class="notes">
-            Allow the controller (router) to handle aggregation of data. Get
-            rid of helpers and logic where models call other models.
+            Based on features. Look at data consumed by client, not data
+            structures. Provide views. Model persistence is also a service
+            for models.
           </aside>
         </section>
 
         <section>
-          <h1>Separate Libraries into Servers</h1>
-          <h2>Define an interface (like JSON over REST)</h2>
+          <h1>Break Out Existing Services into Modules</h1>
+          <h2>Define an Interface, like JSON over REST, and Refactor</h2>
+        </section>
 
-          <aside class="notes">
-          </aside>
+        <section>
+          <h1>Optimize Features Involving Many Services</h1>
+          <h2>Define a View in the Middle</h2>
+        </section>
+
+        <section>
+          <h1>Break out Service Modules into Servers</h1>
         </section>
 
         <section>
@@ -594,8 +590,7 @@ git push heroku master</code></pre>
         { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
         { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-        { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
       ]
     });
     </script>
