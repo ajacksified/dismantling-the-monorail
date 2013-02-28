@@ -38,17 +38,24 @@
           <h1>Dismantling the Monorail</h1>
           <p>Jack Lawson (<a href="https://twitter.com/ajacksified" target="_blank">@ajacksified</a>)</p>
           <aside class="notes">
-            A tale of antipatterns.
+            There is a pattern/cycle in the life of an application that often
+            manifests, especially but not only with web applications. Build
+            app. Grows in complexity. Start doing more maintainance than
+            development. Need to refactor, upgrade, or change to more
+            appropriate technology. Hard to do with coupled code. Doesn't have
+            to be that way. We shouldn't accept that things get difficult as
+            they get larger.
           </aside>
         </section>
 
         <section>
           <h1>Goals</h1>
           <aside class="notes">
-            It is easy to say "set your sights on a goal, and do whatever you
-            can to achieve it." Upper bound is what we want. Lower bound is what
+            We work with a vision of a goal.
+            Goals are a compromise. Upper bound is what we want. Lower bound is what
             we can achieve. For engineers, what we can achieve is what we can
             build. What we can build in a period of time is based on efficiency.
+            Increase efficiency, increase goal.
           </aside>
         </section>
 
@@ -324,6 +331,11 @@ git push heroku master</code></pre>
         <section>
           <section>
             <img src="./img/services.gif" />
+
+            <aside class="notes">
+              Still slices of mvc apps, just distributed. The view apps don't
+              care where the data came from, they just need to use the data.
+            </aside>
           </section>
 
           <section>
@@ -336,8 +348,7 @@ git push heroku master</code></pre>
 
           <aside class="notes">
             Breaking up your application looks like it adds layers. Shortcuts
-            prevented. DRY code looks the same anyway. Little more work for ops
-            but easily mitigated.
+            prevented. This is what DRY code looks like anyway.
           </aside>
         </section>
 
